@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D'MONYEZ KITCHEN – Order Direct, Save More</title>
+<meta name="description" content="Lagos street food. Order directly on WhatsApp or pay to our account. Save 25% on delivery fees.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:      #0C0C0C;
+  --bg2:     #141414;
+  --bg3:     #1C1C1C;
+  --accent:  #FF6B00;
+  --red:     #C62828;
+  --wa:      #25D366;
+  --white:   #F0EDE8;
+  --muted:   #888;
+  --border:  rgba(255,255,255,0.07);
+  --disp:    'Bebas Neue', sans-serif;
+  --body:    'Outfit', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--body);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 90px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+img { display: block; max-width: 100%; }
+button { cursor: pointer; border: none; font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+
+/* HEADER */
+.header {
+  background: #000;
+  padding: 24px 16px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%; transform: translateX(-50%);
+  width: 300px; height: 160px;
+  background: radial-gradient(ellipse, rgba(255,107,0,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.logo-wrap {
+  position: relative; width: 96px; height: 96px;
+  margin: 0 auto 12px;
+}
+.logo-ring {
+  position: absolute; inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(var(--accent), var(--red), var(--accent));
+  animation: spin 6s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.logo-inner {
+  position: absolute; inset: 3px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg3);
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-inner img { width: 100%; height: 100%; object-fit: cover; }
+.logo-fallback {
+  font-family: var(--disp); font-size: 28px;
+  color: var(--accent); letter-spacing: 1px;
+}
+.brand-name {
+  font-family: var(--disp); font-size: 27px;
+  letter-spacing: 4px; color: var(--white); line-height: 1;
+}
+.brand-tagline {
+  font-size: 10px; letter-spacing: 3px;
+  color: var(--muted); text-transform: uppercase; margin: 3px 0 6px;
+}
+.brand-address {
+  font-size: 11.5px; color: var(--muted);
+  display: flex; align-items: center; justify-content: center; gap: 4px;
+}
+
+/* HERO */
+.hero {
+  background: var(--bg2);
+  padding: 20px 16px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,107,0,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,107,0,0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: rgba(255,107,0,0.1);
+  border: 1px solid rgba(255,107,0,0.3);
+  color: var(--accent);
+  font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; padding: 4px 12px; border-radius: 20px;
+  margin-bottom: 10px;
+}
+.hero-h1 {
+  font-family: var(--disp); font-size: 38px;
+  line-height: 1.0; letter-spacing: 2px; margin-bottom: 8px;
+}
+.hero-h1 em { color: var(--accent); font-style: normal; }
+.hero-p {
+  font-size: 12.5px; color: var(--muted);
+  margin-bottom: 18px; line-height: 1.65;
+}
+.hero-p strong { color: var(--white); }
+.btn-wa-hero {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--wa); color: #fff;
+  font-family: var(--disp); font-size: 21px; letter-spacing: 1.5px;
+  padding: 14px 24px; border-radius: 8px; width: 100%;
+  box-shadow: 0 6px 28px rgba(37,211,102,0.28);
+  transition: transform 0.15s;
+}
+.btn-wa-hero:active { transform: scale(0.97); }
+
+/* SAVINGS BAR */
+.savings-bar {
+  background: linear-gradient(90deg, var(--red), var(--accent));
+  color: #fff; font-size: 11.5px; font-weight: 700;
+  text-align: center; padding: 9px 12px; letter-spacing: 0.3px;
+}
+
+/* BANK PAYMENT */
+.payment-section {
+  margin: 16px 12px 0;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+}
+.payment-header {
+  background: var(--bg3); padding: 11px 14px;
+  font-family: var(--disp); font-size: 16px; letter-spacing: 2px;
+  color: var(--accent); display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.payment-body { padding: 14px; }
+.bank-card {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-left: 3px solid var(--accent); border-radius: 8px;
+  padding: 12px 14px; margin-bottom: 10px;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.bank-card:last-of-type { margin-bottom: 0; }
+.bank-info { flex: 1; min-width: 0; }
+.bank-name {
+  font-size: 10px; font-weight: 700; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px;
+}
+.bank-account {
+  font-family: var(--disp); font-size: 22px;
+  letter-spacing: 3px; color: var(--white);
+}
+.bank-holder { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
+.btn-copy {
+  background: rgba(255,107,0,0.1); border: 1px solid rgba(255,107,0,0.25);
+  color: var(--accent); font-size: 11px; font-weight: 700;
+  padding: 7px 13px; border-radius: 6px; letter-spacing: 0.5px;
+  white-space: nowrap; text-transform: uppercase; transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+.btn-copy.copied { background: var(--accent); color: #000; }
+.payment-note {
+  font-size: 11.5px; color: var(--muted); margin-top: 12px;
+  line-height: 1.65; padding: 10px 12px;
+  background: rgba(255,107,0,0.05); border-radius: 6px;
+  border: 1px dashed rgba(255,107,0,0.2);
+}
+.payment-note strong { color: var(--accent); }
+
+/* TABS */
+.tabs-wrap {
+  position: sticky; top: 0; z-index: 90;
+  background: var(--bg); border-bottom: 1px solid var(--border);
+  padding: 10px 12px; overflow-x: auto; white-space: nowrap;
+  scrollbar-width: none;
+}
+.tabs-wrap::-webkit-scrollbar { display: none; }
+.tabs { display: inline-flex; gap: 6px; }
+.tab-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--bg3); color: var(--muted); font-size: 12px; font-weight: 600;
+  padding: 7px 14px; border-radius: 20px;
+  border: 1px solid var(--border); white-space: nowrap;
+  transition: all 0.15s; letter-spacing: 0.3px;
+}
+.tab-btn.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 700; }
+
+/* CATEGORY */
+.category-section { padding-bottom: 6px; }
+.category-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 18px 14px 10px;
+}
+.category-emoji { font-size: 18px; }
+.category-title {
+  font-family: var(--disp); font-size: 18px;
+  letter-spacing: 2.5px; color: var(--white); white-space: nowrap;
+}
+.category-line { flex: 1; height: 1px; background: var(--border); }
+
+/* MENU GRID */
+.menu-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; padding: 0 12px;
+}
+
+/* CARD */
+.card {
+  background: var(--bg2); border-radius: 12px;
+  overflow: hidden; border: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  transition: border-color 0.2s, transform 0.15s;
+  animation: fadeUp 0.35s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card:active { transform: scale(0.98); border-color: var(--accent); }
+.card-img-wrap {
+  width: 100%; aspect-ratio: 4/3;
+  overflow: hidden; background: var(--bg3); position: relative;
+}
+.card-img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.35s;
+}
+.card:hover .card-img { transform: scale(1.06); }
+.card-img-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 5px;
+  background: var(--bg3);
+}
+.card-img-placeholder span {
+  font-family: var(--disp); font-size: 13px;
+  letter-spacing: 2px; color: var(--accent);
+}
+.card-body {
+  padding: 10px; flex: 1;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.card-name { font-size: 12.5px; font-weight: 700; line-height: 1.3; color: var(--white); }
+.card-price {
+  font-family: var(--disp); font-size: 19px;
+  letter-spacing: 1px; color: var(--accent);
+}
+.card-actions {
+  display: flex; flex-direction: column; gap: 5px;
+  margin-top: auto; padding-top: 6px;
+}
+.btn-order {
+  background: var(--wa); color: #fff;
+  font-size: 11.5px; font-weight: 700; padding: 8px 6px;
+  border-radius: 6px; text-align: center; text-transform: uppercase;
+  letter-spacing: 0.4px;
+  display: flex; align-items: center; justify-content: center; gap: 4px;
+  transition: opacity 0.15s;
+}
+.btn-order:active { opacity: 0.8; }
+.btn-cart {
+  background: transparent; color: var(--accent);
+  border: 1.5px solid rgba(255,107,0,0.35);
+  font-size: 11.5px; font-weight: 700; padding: 7px 6px;
+  border-radius: 6px; text-align: center; text-transform: uppercase;
+  letter-spacing: 0.4px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.btn-cart.added { background: var(--accent); color: #000; border-color: var(--accent); }
+
+/* FOOTER */
+.footer {
+  margin: 28px 12px 0; padding-bottom: 10px;
+}
+.footer-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-left: 3px solid var(--accent); border-radius: 10px;
+  padding: 14px 16px; font-size: 12.5px; color: var(--muted);
+  line-height: 1.75; margin-bottom: 12px;
+}
+.footer-card strong { color: var(--white); }
+.footer-card .hi { color: var(--accent); font-weight: 700; }
+.footer-meta { text-align: center; font-size: 11px; color: #444; margin-bottom: 6px; }
+.footer-admin {
+  display: block; text-align: center;
+  font-size: 10px; color: #333;
+  text-decoration: underline; cursor: pointer; padding: 4px;
+}
+.footer-admin:hover { color: #666; }
+
+/* CART BAR */
+.cart-bar {
+  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 480px;
+  background: var(--bg2); border-top: 2px solid var(--accent);
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; z-index: 200;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.7);
+}
+.cart-info { flex: 1; font-size: 12.5px; font-weight: 600; color: var(--white); line-height: 1.3; }
+.cart-info .cart-total { font-family: var(--disp); font-size: 19px; letter-spacing: 1px; color: var(--accent); }
+.btn-checkout {
+  background: var(--wa); color: #fff;
+  font-family: var(--disp); font-size: 15px; letter-spacing: 1px;
+  padding: 11px 16px; border-radius: 8px; text-transform: uppercase;
+  white-space: nowrap; opacity: 0.3; pointer-events: none;
+  transition: opacity 0.2s, box-shadow 0.2s;
+}
+.btn-checkout.active { opacity: 1; pointer-events: all; box-shadow: 0 2px 16px rgba(37,211,102,0.35); }
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 100px; left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--accent); color: #000;
+  font-size: 13px; font-weight: 700; padding: 9px 20px;
+  border-radius: 30px; white-space: nowrap;
+  opacity: 0; transition: opacity 0.2s, transform 0.2s;
+  z-index: 300; pointer-events: none;
+  max-width: 90vw; text-align: center;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ADMIN MODAL */
+.modal-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.88); z-index: 500;
+  align-items: flex-end; justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 16px 16px 0 0;
+  padding: 24px 20px 36px;
+  width: 100%; max-width: 480px;
+  max-height: 80vh; overflow-y: auto;
+  animation: slideUp 0.25s ease;
+}
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+.modal-title { font-family: var(--disp); font-size: 20px; letter-spacing: 2px; color: var(--accent); margin-bottom: 14px; }
+.modal-body { font-size: 13px; color: #aaa; line-height: 1.8; }
+.modal-body h4 { color: var(--white); font-size: 13px; margin: 14px 0 4px; }
+.modal-body code { background: #222; padding: 2px 7px; border-radius: 4px; font-size: 12px; color: var(--accent); }
+.modal-body ol { padding-left: 18px; }
+.modal-body li { margin-bottom: 6px; }
+.btn-modal-close {
+  width: 100%; margin-top: 20px;
+  background: var(--bg3); color: var(--muted);
+  font-family: var(--disp); font-size: 16px; letter-spacing: 1.5px;
+  padding: 12px; border-radius: 8px; text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo-wrap">
+    <div class="logo-ring"></div>
+    <div class="logo-inner">
+      <img
+        src="IMG-20260425-WA0035.jpg"
+        alt="D'MONYEZ KITCHEN"
+        onerror="this.parentElement.innerHTML='<div class=logo-fallback>DM</div>'"
+      >
+    </div>
+  </div>
+  <div class="brand-name">D'MONYEZ KITCHEN</div>
+  <div class="brand-tagline">Lagos Street Food</div>
+  <div class="brand-address">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+    52 Seriki St, Off Dopemu, Iyana Ipaja, Lagos
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-badge">🔥 Skip the App Fees</div>
+  <h1 class="hero-h1">Order Direct.<br><em>Pay Less. Eat More.</em></h1>
+  <p class="hero-p">
+    <strong>No Chowdeck. No commission.</strong><br>
+    Order on WhatsApp or pay straight to our bank — you save every time.
+  </p>
+  <a id="hero-wa-btn" href="#" class="btn-wa-hero" target="_blank" rel="noopener">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.057 23.082a.75.75 0 0 0 .916.916l5.228-1.467A11.952 11.952 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.92 0-3.72-.5-5.28-1.374l-.378-.218-3.924 1.1 1.1-3.924-.218-.378C2.5 15.72 2 13.92 2 12 2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    Tap to Order on WhatsApp
+  </a>
+</section>
+
+<!-- SAVINGS BAR -->
+<div class="savings-bar">🎉 Direct Orders Save You 25% vs Chowdeck — Same Great Food, Less Cost!</div>
+
+<!-- BANK PAYMENT -->
+<section class="payment-section">
+  <div class="payment-header">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+    PAY DIRECTLY TO OUR ACCOUNT
+  </div>
+  <div class="payment-body" id="bank-details-container"></div>
+</section>
+
+<!-- TABS -->
+<div class="tabs-wrap">
+  <div class="tabs" id="tab-list"></div>
+</div>
+
+<!-- MENU -->
+<div id="menu-container"></div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-card">
+    💡 <strong>Why order direct?</strong><br>
+    Direct orders = <span class="hi">0% commission.</span>
+    You keep 100% of ₦10,000 — vs only ₦7,500 on Chowdeck.
+    That's <span class="hi">₦2,500 saved</span> on every single order!
+  </div>
+  <div class="footer-meta" id="updated-date"></div>
+  <span class="footer-admin" onclick="openAdmin()">Restaurant Admin</span>
+</footer>
+
+<!-- CART BAR -->
+<div class="cart-bar">
+  <div class="cart-info">
+    <div>🛒 <span id="cart-count">0</span> item(s)</div>
+    <div class="cart-total" id="cart-total">₦0</div>
+  </div>
+  <button class="btn-checkout" id="checkout-btn" onclick="checkoutWA()">Checkout via WhatsApp</button>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ADMIN MODAL -->
+<div class="modal-overlay" id="admin-modal" onclick="if(event.target===this)closeAdmin()">
+  <div class="modal">
+    <div class="modal-title">🔧 Restaurant Admin</div>
+    <div class="modal-body">
+      <p>Update prices, menu items, or bank details — no developer needed.</p>
+      <h4>Option 1: WhatsApp Update (Free — First Month)</h4>
+      <ol>
+        <li>Message your developer: <em>"Change Pepper beef to ₦4,500"</em></li>
+        <li>Done same day.</li>
+      </ol>
+      <h4>Option 2: DIY in Under 2 Minutes</h4>
+      <ol>
+        <li>Login to Netlify → open <code>index.html</code></li>
+        <li>Find <code>// === EDIT MENU HERE ===</code></li>
+        <li>Change price: <code>price: 4000</code> → <code>price: 4500</code></li>
+        <li>For bank details: find <code>// === BANK DETAILS ===</code></li>
+        <li>Save — "Prices last updated" auto-refreshes.</li>
+      </ol>
+      <p style="margin-top:12px;font-size:11px;color:#555;">Your site. Your rules. Chowdeck cannot touch your prices. 💪</p>
+    </div>
+    <button class="btn-modal-close" onclick="closeAdmin()">Close</button>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// RESTAURANT CONFIG
+const RESTAURANT = {
+  name:  "D'MONYEZ KITCHEN",
+  phone: "2348087239058",
+};
+
+// === BANK DETAILS ===
+const bankDetails = [
+  { bank: "Opay",   account: "9012345678", holder: "D'Monyez Kitchen" },
+  { bank: "GTBank", account: "0123456789", holder: "D'Monyez Kitchen" },
+];
+// === END BANK DETAILS ===
+
+// === EDIT MENU HERE ===
+const menuData = [
+  {
+    category: "🍝 Pasta & Noodles", id: "pasta",
+    items: [
+      { name: "Stir fry spaghetti & 5pcs beef", price: 5000, image: "spaghetti.jpg" },
+    ]
+  },
+  {
+    category: "🌯 Shawarma", id: "shawarma",
+    items: [
+      { name: "Jumbo size shawarma",       price: 7000, image: "jumbo-shawarma.jpg" },
+      { name: "Chicken & Beef shawarma",   price: 4000, image: "shawarma.jpg" },
+    ]
+  },
+  {
+    category: "🍳 Local Plates", id: "local",
+    items: [
+      { name: "Steamed yam & egg sauce with veggies", price: 6000,  image: "yam-egg.jpg" },
+      { name: "Isiewu (full goat head)",               price: 10000, image: "isiewu.jpg" },
+      { name: "Fried Plantain with pepper sauce",      price: 3000,  image: "plantain.jpg" },
+    ]
+  },
+  {
+    category: "🍢 Snacks & Skewers", id: "snacks",
+    items: [
+      { name: "Pepper beef 10pcs", price: 4000,  image: "pepper-beef.jpg" },
+      { name: "Gizzard kebab",     price: 1500,  image: "gizzard.jpg" },
+      { name: "Small chops",       price: 10000, image: "smallchops.jpg" },
+    ]
+  },
+];
+// === END EDIT ===
+// ============================================================
+
+const cart = {};
+const allItems = [];
+menuData.forEach(cat => cat.items.forEach(item => allItems.push(item)));
+
+function fmt(n) { return "₦" + n.toLocaleString("en-NG"); }
+function waLink(t) { return `https://wa.me/${RESTAURANT.phone}?text=${encodeURIComponent(t)}`; }
+
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2200);
+}
+
+// Hero button
+document.getElementById("hero-wa-btn").href =
+  waLink(`Hello ${RESTAURANT.name}! I'd like to place an order.`);
+
+// Bank details
+function renderBanks() {
+  const el = document.getElementById("bank-details-container");
+  el.innerHTML = bankDetails.map((b, i) => `
+    <div class="bank-card">
+      <div class="bank-info">
+        <div class="bank-name">${b.bank}</div>
+        <div class="bank-account">${b.account}</div>
+        <div class="bank-holder">${b.holder}</div>
+      </div>
+      <button class="btn-copy" id="cp${i}" onclick="copyAcc(${i})">Copy</button>
+    </div>
+  `).join("") + `
+    <div class="payment-note">
+      ⚡ <strong>After payment:</strong> Send your receipt on WhatsApp with your order & delivery address. We'll confirm within 5 mins.
+    </div>`;
+}
+function copyAcc(i) {
+  navigator.clipboard.writeText(bankDetails[i].account).then(() => {
+    const b = document.getElementById(`cp${i}`);
+    b.textContent = "Copied!"; b.classList.add("copied");
+    showToast(`${bankDetails[i].bank} number copied!`);
+    setTimeout(() => { b.textContent = "Copy"; b.classList.remove("copied"); }, 2000);
+  }).catch(() => showToast("Please copy manually"));
+}
+
+// Tabs
+function renderTabs() {
+  const tl = document.getElementById("tab-list");
+  const all = document.createElement("button");
+  all.className = "tab-btn active"; all.dataset.cat = "all";
+  all.textContent = "🍽 All"; all.onclick = () => filter("all", all);
+  tl.appendChild(all);
+  menuData.forEach(cat => {
+    const b = document.createElement("button");
+    b.className = "tab-btn"; b.dataset.cat = cat.id;
+    b.textContent = cat.category; b.onclick = () => filter(cat.id, b);
+    tl.appendChild(b);
+  });
+}
+function filter(id, clicked) {
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+  clicked.classList.add("active");
+  document.querySelectorAll(".category-section").forEach(s => {
+    s.style.display = (id === "all" || s.dataset.cat === id) ? "" : "none";
+  });
+  if (id !== "all") {
+    const sec = document.querySelector(`.category-section[data-cat="${id}"]`);
+    if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+// Menu
+function renderMenu() {
+  const container = document.getElementById("menu-container");
+  container.innerHTML = "";
+  let gi = 0;
+  menuData.forEach(cat => {
+    const sec = document.createElement("div");
+    sec.className = "category-section"; sec.dataset.cat = cat.id;
+    const emoji = cat.category.split(" ")[0];
+    const title = cat.category.replace(/^\S+\s/, "").toUpperCase();
+    sec.innerHTML = `<div class="category-header"><div class="category-emoji">${emoji}</div><div class="category-title">${title}</div><div class="category-line"></div></div>`;
+    const grid = document.createElement("div");
+    grid.className = "menu-grid";
+    cat.items.forEach(item => {
+      const idx = gi++;
+      const card = document.createElement("div");
+      card.className = "card"; card.style.animationDelay = `${idx * 0.04}s`;
+      const imgWrap = document.createElement("div");
+      imgWrap.className = "card-img-wrap";
+      const img = document.createElement("img");
+      img.className = "card-img"; img.src = item.image; img.alt = item.name; img.loading = "lazy";
+      img.onerror = function() {
+        imgWrap.innerHTML = `<div class="card-img-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="#FF6B00" opacity="0.35"><path d="M18.5 12A6.5 6.5 0 0 0 12 5.5 6.5 6.5 0 0 0 5.5 12 6.5 6.5 0 0 0 12 18.5 6.5 6.5 0 0 0 18.5 12M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2z"/></svg><span>D'MONYEZ</span></div>`;
+      };
+      imgWrap.appendChild(img);
+      const body = document.createElement("div");
+      body.className = "card-body";
+      body.innerHTML = `
+        <div class="card-name">${item.name}</div>
+        <div class="card-price">${fmt(item.price)}</div>
+        <div class="card-actions">
+          <button class="btn-order" onclick="orderNow(allItems[${idx}])">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.057 23.082a.75.75 0 0 0 .916.916l5.228-1.467A11.952 11.952 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.92 0-3.72-.5-5.28-1.374l-.378-.218-3.924 1.1 1.1-3.924-.218-.378C2.5 15.72 2 13.92 2 12 2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Order Now
+          </button>
+          <button class="btn-cart" id="cb${idx}" onclick="addToCart(${idx}, this)">+ Add to Cart</button>
+        </div>`;
+      card.appendChild(imgWrap); card.appendChild(body); grid.appendChild(card);
+    });
+    sec.appendChild(grid); container.appendChild(sec);
+  });
+}
+
+// Cart
+function addToCart(idx, btn) {
+  const item = allItems[idx];
+  cart[idx] = (cart[idx] || 0) + 1;
+  updateBar();
+  showToast(`✓ ${item.name} added!`);
+  btn.classList.add("added");
+  btn.textContent = `✓ In Cart (${cart[idx]})`;
+  setTimeout(() => { btn.classList.remove("added"); btn.textContent = "+ Add to Cart"; }, 1400);
+}
+function updateBar() {
+  let count = 0, total = 0;
+  for (const [i, q] of Object.entries(cart)) { count += q; total += allItems[i].price * q; }
+  document.getElementById("cart-count").textContent = count;
+  document.getElementById("cart-total").textContent = fmt(total);
+  const btn = document.getElementById("checkout-btn");
+  count > 0 ? btn.classList.add("active") : btn.classList.remove("active");
+}
+function orderNow(item) {
+  const msg = `Hello ${RESTAURANT.name}! I want to order:\n\n🍽 ${item.name} — ${fmt(item.price)}\n\nMy name is ___ and my location is ___`;
+  window.open(waLink(msg), "_blank");
+}
+function checkoutWA() {
+  const lines = []; let total = 0;
+  for (const [i, q] of Object.entries(cart)) {
+    lines.push(`• ${allItems[i].name} x${q} — ${fmt(allItems[i].price * q)}`);
+    total += allItems[i].price * q;
+  }
+  if (!lines.length) return;
+  const msg = `Hello ${RESTAURANT.name}! My order:\n\n${lines.join("\n")}\n\n💰 Total: ${fmt(total)}\n\nMy name is ___ and my location is ___`;
+  window.open(waLink(msg), "_blank");
+}
+
+// Admin
+function openAdmin()  { document.getElementById("admin-modal").classList.add("open"); }
+function closeAdmin() { document.getElementById("admin-modal").classList.remove("open"); }
+
+// Date
+document.getElementById("updated-date").textContent =
+  "Prices last updated: " + new Date().toLocaleDateString("en-NG", { year: "numeric", month: "long", day: "numeric" });
+
+// Init
+renderBanks(); renderTabs(); renderMenu();
+</script>
+</body>
+</html>
